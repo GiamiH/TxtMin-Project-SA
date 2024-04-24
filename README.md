@@ -1,1 +1,1 @@
-# Text Mining Project - Sentimental Analysis
+# Text Mining Project - Sentiment Analysis
