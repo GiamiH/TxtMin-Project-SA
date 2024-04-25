@@ -8,13 +8,13 @@
 ### Research Questions 
 - MQ: Which gender is likely to give a positive, neutral, or negative review?
 - Which gender is more likely to be critical in their review? 
-  - Check how many words and how often the words are repeated?
+  - Check how many words and how often the words are repeated.
 - Which gender has the longest review?
 
 ### Datasets 
-- Amazon One Plus Reviews [here] (https://data.world/opensnippets/amazon-mobile-phones-reviews)
-- [IPhone Reviews from Amazon] (https://www.kaggle.com/datasets/thedevastator/apple-iphone-11-reviews-from-amazon-com)
-- [Amazon Mobile Phone Reviews] (https://data.world/promptcloud/amazon-mobile-phone-reviews)
+- Amazon One Plus Reviews  https://data.world/opensnippets/amazon-mobile-phones-reviews
+- iPhone Reviews from Amazon https://www.kaggle.com/datasets/thedevastator/apple-iphone-11-reviews-from-amazon-com
+- Amazon Mobile Phone Reviews https://data.world/promptcloud/amazon-mobile-phone-reviews
 
   
 ### Planned Milestones 
@@ -38,6 +38,6 @@
 
 ### Questions of Each Update
 Update 0:
-- We want to use a gender guesser library to guess the gender of the reviewer since most datasets do not provide that info. However we are unsure of how it would approach names that could be used for males and females (ex. Jamie). What would you advice?
+- We want to use a gender guesser library to guess the gender of the reviewer since most datasets do not provide that info. However, we are unsure of how it would approach names that could be used for males and females (ex. Jamie). What would you advise?
 - 
 ### Documentation
