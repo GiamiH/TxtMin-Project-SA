@@ -16,7 +16,7 @@
 
 - iPhone 14 Customer Reviews Dataset (https://www.kaggle.com/datasets/shahriarkabir/iphone-14-customer-reviews-dataset-ratings): Around 1,023 review where the customer location will not be useful to analyze gender behavior.
 
-- Process: The idea would be to check whether there is a specific punctuation that would help in the sentimental analysis part of it such as an !. Another thing we would have to keep in mind is the use of emojis especially more nowadays. This means we would have to figure out a way to identify an emoji and evaluate it whether it would be perceived as good or bad. A possible idea would be to use identify the emoji with its unicode.
+- Process: First off we would have to filter out any irrelavant characters such as number or uncommon punctuation like : and ;. Filtering these irrelevant punctuation will hopefully allow the more significant puntuation such as ! for sentimental analysis. One may conside making the review all the same case however capitalizing an entire words like AMAZING! creates more of a positive sentiment than Amazing!. Some people rather than using words may use emojis to showcase their opinion/emotion. This means we would have to figure out a way to identify an emoji and evaluate it whether it would be perceived as good or bad. A possible idea would be to use identify the emoji with its unicode. Since all the data we have been able to collect is in englsih there is no need to translate or do language processing.
 
   
 ### Planned Milestones 
