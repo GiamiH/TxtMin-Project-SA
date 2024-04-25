@@ -12,7 +12,7 @@
 - Which gender has the longest review?
 
 ### Datasets 
-- [Amazon One Plus Reviews]  (https://data.world/opensnippets/amazon-mobile-phones-reviews.html)
+- Amazon One Plus Reviews https://data.world/opensnippets/amazon-mobile-phones-reviews
 - iPhone Reviews from Amazon https://www.kaggle.com/datasets/thedevastator/apple-iphone-11-reviews-from-amazon-com
 - Amazon Mobile Phone Reviews https://data.world/promptcloud/amazon-mobile-phone-reviews
 
