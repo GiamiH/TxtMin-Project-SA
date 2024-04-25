@@ -16,6 +16,7 @@ This project aims to investigate how language and sentiment vary between online 
 Contain name/profile:
 - iPhone Reviews from Amazon (https://www.kaggle.com/datasets/thedevastator/apple-iphone-11-reviews-from-amazon-com): Reviews of iPhone XR contains around 5010 reviews of the product. The data contains many extra fields which we are not interested in such as the total_comments, url, reviewed_at (date) and others. 
 - iPhone 14 Customer Reviews Dataset (https://www.kaggle.com/datasets/shahriarkabir/iphone-14-customer-reviews-dataset-ratings): Around 1,023 review where the customer location will not be useful to analyze gender behavior.
+- Amazon One Plus Reviews (https://data.world/opensnippets/amazon-mobile-phones-reviews) - However will likely not be used due that it doesn't seem to contain apple products in contrary to its description.
 
 Doesn't contain name of reviewer:
 - Amazon Mobile Phone Reviews (https://data.world/promptcloud/amazon-mobile-phone-reviews) - Around 1279 reviews of specifically iPhone products so it would have to be filtered out and saved into a csv file.
