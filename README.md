@@ -3,12 +3,12 @@
 
 ## Romeo vs. Juliet: Investigating Gender-Based Linguistic Variations in Online Reviews: A Sentiment Analysis Approach
 
-# Abstract 
+### Abstract 
 
-# Research Questions 
+### Research Questions 
 
-# Datasets 
+### Datasets 
 
-# Planned Milestones 
+### Planned Milestones 
 
-# Documentation
+### Documentation
