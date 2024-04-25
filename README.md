@@ -17,11 +17,13 @@ This project aims to investigate how language and sentiment vary between online 
 
 - iPhone 14 Customer Reviews Dataset (https://www.kaggle.com/datasets/shahriarkabir/iphone-14-customer-reviews-dataset-ratings): Around 1,023 review where the customer location will not be useful to analyze gender behavior.
 
-- Process: First off we would have to filter out any irrelavant characters such as number or uncommon punctuation like : and ;. Filtering these irrelevant punctuation will hopefully allow the more significant puntuation such as ! for sentimental analysis. One may conside making the review all the same case however capitalizing an entire words like AMAZING! creates more of a positive sentiment than Amazing!. Some people rather than using words may use emojis to showcase their opinion/emotion. This means we would have to figure out a way to identify an emoji and evaluate it whether it would be perceived as good or bad. A possible idea would be to use identify the emoji with its unicode. Since all the data we have been able to collect is in englsih there is no need to translate or do language processing.
+- Amazon One Plus Reviews (https://data.world/opensnippets/amazon-mobile-phones-reviews)
+- 
+- Amazon Mobile Phone Reviews (https://data.world/promptcloud/amazon-mobile-phone-reviews)
 
-- Amazon One Plus Reviews https://data.world/opensnippets/amazon-mobile-phones-reviews
-- iPhone Reviews from Amazon https://www.kaggle.com/datasets/thedevastator/apple-iphone-11-reviews-from-amazon-com
-- Amazon Mobile Phone Reviews https://data.world/promptcloud/amazon-mobile-phone-reviews
+
+- Process: The dataset as one can see are from different phones however for the sake of the analysis we will consider them the same since they are the made from the same brand. First off we would have to filter out any irrelevant characters such as numbers or uncommon punctuation like : and ;. Filtering these irrelevant punctuation will hopefully allow the more significant punctuation such as ! for sentimental analysis. One may consider making the review all the same case however capitalizing an entire words like AMAZING! creates more of a positive sentiment than Amazing! so we will keep fully capitalized words (if any). Some people rather than using words may use emojis to showcase their opinion/emotion. This means we would have to figure out a way to identify an emoji and evaluate it whether it would be perceived as good or bad. A possible idea would be to use identify the emoji with its unicode. Since all the data we have been able to collect is in english there is no need to translate or do language processing. In terms of enriching the data we can also investigate what aspects of the phone do reviewers tend to focus on like whether it is the camera quality or the size of the screen and see if there is any difference between the genders.
+
 
   
 ### Planned Milestones 
@@ -45,6 +47,6 @@ This project aims to investigate how language and sentiment vary between online 
 
 ### Questions of Each Update
 Update 0:
-- We want to use a gender guesser library to guess the gender of the reviewer since most datasets do not provide that info. However, we are unsure of how it would approach names that could be used for males and females (ex. Jamie). What would you advise?
-- 
+- We want to use a gender guesser library to guess the gender of the reviewer since most datasets do not provide that info. However, we are unsure of how it would approach names that could be used for males and females (ex. Jamie). What would you advise? [https://pypi.org/project/gender-guesser/]
+  
 ### Documentation
