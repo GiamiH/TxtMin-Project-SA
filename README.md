@@ -6,9 +6,31 @@
 ### Abstract 
 
 ### Research Questions 
+- MQ: Which gender is likely to give a positive, neutral, or negative review?
+- Which gender is more likely to be critical in their review? 
+  - Check how many words and how often the words are repeated?
+- Which gender has the longest review?
 
 ### Datasets 
 
 ### Planned Milestones 
+- update 1: May 8
+  - Pre-processing the data - Maria
+- update 2: May 20 
+  - Sentiment Analysis - Giami
+- Interpreting the Results - Hannah 
+- Plot the Results - Hannah 
+- Presentation (May 28) - Everyone 
+  - Background Information 
+  - Key Findings 
+  - Critical appraisal of project and results 
+  - Connection of the project to course content  
+- Paper (due May 31st)
+  - Intro - Hannah
+  - Methods - Maria and Giami
+  - Results - Hannah
+  - Discussion - Maria
+  - Conclusion/ Suggestion for future - Giami 
+
 
 ### Documentation
