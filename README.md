@@ -34,6 +34,6 @@
 
 ### Questions of Each Update
 Update 0:
-- We would a gender gueser library to guess the gender of the reviewr since most datasets do not provide that info. However we are unsure of how it would aproach names that could be used for males and females (ex. Jamie). What would you advice?
+- We want to use a gender gueser library to guess the gender of the reviewr since most datasets do not provide that info. However we are unsure of how it would aproach names that could be used for males and females (ex. Jamie). What would you advice?
 - 
 ### Documentation
