@@ -29,9 +29,16 @@ for r in og:
 # Removes any review without a name
 data = []
 for r in og:
-    if r["profile_name"] != "Amazon customer" and r["profile_name"] != "Amazon Customer":
+    s = r["profile_name"]
+    if (s != "Amazon customer" and
+        s != "Amazon Customer" and not s[0].isdigit() and len(s) > 2
+        and len(s) !=1 ):
         data.append(r)
-        
-        
+
+l = []
+for r in data:
+    l.append(r["profile_name"])
+
+
     
     
