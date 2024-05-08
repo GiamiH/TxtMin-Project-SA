@@ -20,13 +20,15 @@ for r in og:
     del r["total_comments"]
     del r["reviewed_at"]
     del r["url"]
-    
-# simplifies start to a single number (1 - 5)
+
+
+# simplifies start to a single int (1 - 5)
 for r in og:
     s = r["review_rating"]
-    r["review_rating"] = s[0]
+    r["review_rating"] = int(s[0])
 
-# Removes any review without a name
+
+# Removes any review w/ Amz Cus and names with 1 & 2 char
 data = []
 for r in og:
     s = r["profile_name"]
@@ -35,10 +37,25 @@ for r in og:
         and len(s) !=1 ):
         data.append(r)
 
-l = []
-for r in data:
-    l.append(r["profile_name"])
+# Helpful Count is an int
+for r in data:   
+    s = r["helpful_count"]
+    if s[0] == "O":
+        r["helpful_count"] = 1
+    else:
+        n = ""
+        for d in s:
+            if (d.isdigit()):
+                n += d
+        r["helpful_count"] = int(n)
+        
+        s = r["helpful_count"]
 
 
+        
+ 
+
+        
+   
     
     
