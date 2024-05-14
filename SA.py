@@ -6,6 +6,7 @@ Created on Wed May  8 20:00:52 2024
 """
 
 import json
+import re
 
 # open file
 with open('Iphone11-R.json', 'r') as file:
@@ -48,31 +49,45 @@ for r in data:
         r["helpful_count"] = int(n)
         
         s = r["helpful_count"]
-        
-# Take first names (Clear out Mr./Ms. and Dr.)
+
+# Filters names    
+
+# Single char with dot
+p1 = r'\b[a-zA-Z]\.\s?'
+# Single chars
+p2 = r'\b[a-zA-Z]\b' 
+# Many spaces  
+p3 = r'\s+'
 for r in data:
     prof_name = r["profile_name"]
-    split_name = list(prof_name)
-    c = 0
-    for i in split_name:
-        if i.isalpha():
-            c +=1
-        else:
-            break
+    print(prof_name)
+    n1 = re.sub(p1, '', prof_name)
+    n2 = re.sub(p2, '', n1)
+    n3 = re.sub(p3, ' ', n2).strip()
+    r["profile_name"] = n3
+    print(r["profile_name"])
     
-# Testing with strings to identify namesvia prefix
-    
-split_4= list("Dr.dasdf")
+"""
+# Testing with strings to identify names via 
+split_4= list("sam a.asdam.")
 print(split_4)   
 
-c = 1
+c = 0
 pre = ""
+p=0
+
+
 for i in split_4:
-        if i.isalpha():
+        if i == " ":
+            c=0
+            pre=""
+        elif i.isalpha():
             c +=1
             pre+=i
+        elif i == ".":
+            p +=1
         elif c==2:
-            for indx in range(0,c):
+            for indx in range(0,c+p):
                 del split_4[0]
         elif pre == "Mr":
                 print("Male")
@@ -86,7 +101,10 @@ for i in split_4:
                 print("Female")
         else:
             print("Its a string of 3 char")
-            
-                
+         
 
-print(split_4)   
+"""
+
+
+
+
