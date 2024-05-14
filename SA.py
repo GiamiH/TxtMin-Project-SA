@@ -68,12 +68,29 @@ for r in data:
     print(r["profile_name"])
 
 ##############################################################################
-"""
-Next step do after dinner
-- Differentiate Dr. Mr. Ms. Mrs. w/regexp
-- Replace any periods with a space
+# Differentiate Dr. Mr. Ms. Mrs. w/regexp
+t = "test Mr. bob lol"
+mr = r'\bMr\.\b'
+ms = r'\bMs\.\b'
+mrs = r'\bMrs\.\b'
+
+if re.search(mr,t):
+    t = "male"
+if re.search(ms,t):
+    t = "female"
+if re.search(mrs,t):
+    t = "female"
+    
+print(t)
+
+
+dr = r'\bDr\.\b'
+
+# Replace any periods with a space
+
 """
 ##############################################################################
+"""
 
 """
 # Testing with strings to identify names via 
@@ -110,8 +127,5 @@ for i in split_4:
             print("Its a string of 3 char")
          
 
+
 """
-
-
-
-
