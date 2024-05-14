@@ -66,7 +66,15 @@ for r in data:
     n3 = re.sub(p3, ' ', n2).strip()
     r["profile_name"] = n3
     print(r["profile_name"])
-    
+
+##############################################################################
+"""
+Next step do after dinner
+- Differentiate Dr. Mr. Ms. Mrs. w/regexp
+- Replace any periods with a space
+"""
+##############################################################################
+
 """
 # Testing with strings to identify names via 
 split_4= list("sam a.asdam.")
@@ -75,7 +83,6 @@ print(split_4)
 c = 0
 pre = ""
 p=0
-
 
 for i in split_4:
         if i == " ":
