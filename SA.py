@@ -69,6 +69,7 @@ for r in data:
 
 ##############################################################################
 # Differentiate Dr. Mr. Ms. Mrs. w/regexp
+# After lunch apply it to names above
 t = "J.musthafa"
 mr = r'\bMr\.\b'
 ms = r'\bMs\.\b'
@@ -89,11 +90,6 @@ print(res)
 #Doctor
 dr = r'\bDr\.\b'
 
-
-
-per_space = r'\.'
-res = re.sub(per_space, ' ', t)
-print(res)
 ##############################################################################
 
 
