@@ -33,11 +33,11 @@ data = []
 for r in og:
     s = r["profile_name"]
     if (s != "Amazon customer" and
-        s != "Amazon Customer" and not s[0].isdigit() and len(s) > 2):
+            s != "Amazon Customer" and not s[0].isdigit() and len(s) > 2):
         data.append(r)
 
 # Helpful Count is an int
-for r in data:   
+for r in data:
     s = r["helpful_count"]
     if s[0] == "O":
         r["helpful_count"] = 1
@@ -47,16 +47,16 @@ for r in data:
             if (d.isdigit()):
                 n += d
         r["helpful_count"] = int(n)
-        
+
         s = r["helpful_count"]
 
-# Filters names    
+# Filters names
 
 # Single char with dot
 p1 = r'\b[a-zA-Z]\.\s?'
 # Single chars
-p2 = r'\b[a-zA-Z]\b' 
-# Many spaces  
+p2 = r'\b[a-zA-Z]\b'
+# Many spaces
 p3 = r'\s+'
 for r in data:
     prof_name = r["profile_name"]
@@ -69,28 +69,33 @@ for r in data:
 
 ##############################################################################
 # Differentiate Dr. Mr. Ms. Mrs. w/regexp
-t = "test Mr. bob lol"
+t = "J.musthafa"
 mr = r'\bMr\.\b'
 ms = r'\bMs\.\b'
 mrs = r'\bMrs\.\b'
 
-if re.search(mr,t):
+if re.search(mr, t):
     t = "male"
-if re.search(ms,t):
+if re.search(ms, t):
     t = "female"
-if re.search(mrs,t):
+if re.search(mrs, t):
     t = "female"
-    
-print(t)
-
-
-dr = r'\bDr\.\b'
 
 # Replace any periods with a space
+per_space = r'\.'
+res = re.sub(per_space, ' ', t)
+print(res)
 
-"""
+#Doctor
+dr = r'\bDr\.\b'
+
+
+
+per_space = r'\.'
+res = re.sub(per_space, ' ', t)
+print(res)
 ##############################################################################
-"""
+
 
 """
 # Testing with strings to identify names via 
