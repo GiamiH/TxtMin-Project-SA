@@ -106,55 +106,10 @@ with open(file_names, 'w', encoding = 'utf-8') as f:
         p = r["profile_name"]
         f.write(p + "\n")
 ##############################################################################
-# Differentiate Dr. Mr. Ms. Mrs. w/regexp
-# After lunch apply it to names above
+# May need to insert this above
 
-# Replace any periods with a space
+"""
 per_space = r'\.'
 res = re.sub(per_space, ' ', n3 )
 print(res)
-
-
-
-##############################################################################
-
-# Sample dataset
-
-
-
-data = [
-    {"profile_name": "Mr.asd"},
-    {"profile_name": "Mrs.fda"},
-    {"profile_name": "Ms.fad"},
-    {"profile_name": "fda"},
-    {"profile_name": "Ms.hither"},
-    {"profile_name": "Mr.lol"}
-]
-
-# Process each profile name and add a new column for gender
-for r in data:
-    prof_name = r["profile_name"]
-    
-    
-    # Determine the gender based on the cleaned profile name
-    if re.search(mr, prof_name):
-        gender = "male"
-    elif re.search(ms, prof_name) or re.search(mrs, prof_name):
-        gender = "female"
-    else:
-        # Apply the substitutions
-        n1 = re.sub(p1, '', prof_name)
-        n2 = re.sub(p2, '', n1)
-        n3 = re.sub(p3, ' ', n2).strip()
-        
-        gender = "none"
-        r["profile_name"] = n3
-    
-    # Add the gender to the dictionary
-    r["gender"] = gender
-    
-
-# Print the updated dataset
-for r in data:
-    print(r)
-
+"""
