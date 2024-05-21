@@ -83,7 +83,9 @@ for r in data:
         n1 = re.sub(p1, '', n)
         n2 = re.sub(p2, '', n1)
         n3 = re.sub(p3, ' ', n2).strip()
-
+        
+        """Corpus found is in c so we have to see if there is an adaptable 
+        version of it for python"""
 
 
 #First Names
