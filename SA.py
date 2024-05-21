@@ -32,7 +32,7 @@ for r in og:
 data = []
 for r in og:
     s = r["profile_name"]
-    if (s != "Amazon customer" and
+    if (s != "Amazon customer" and s!= "" and
             s != "Amazon Customer" and not s[0].isdigit() and len(s) > 2):
         data.append(r)
 
@@ -65,16 +65,33 @@ for r in data:
     n2 = re.sub(p2, '', n1)
     n3 = re.sub(p3, ' ', n2).strip()
     r["profile_name"] = n3
-    print(r["profile_name"])
+    
+file_names = "pr_ames.txt"
 
+with open(file_names, 'w', encoding = 'utf-8') as f:
+    for r in data:
+        p = r["profile_name"]
+        f.write(p + "\n")
+
+for l in data:
+    full_n = l["profile_name"]
+    if full_n == "":
+        
+    w = full_n.split()
+    name = w[0]
+    l["profile_name"] = name
+    
 ##############################################################################
 # Differentiate Dr. Mr. Ms. Mrs. w/regexp
 # After lunch apply it to names above
-t = "J.musthafa"
+
+t = "Babu.Abraham"
 mr = r'\bMr\.\b'
 ms = r'\bMs\.\b'
 mrs = r'\bMrs\.\b'
-
+n1 = re.sub(p1, '', t)
+n2 = re.sub(p2, '', n1)
+n3 = re.sub(p3, ' ', n2).strip()
 if re.search(mr, t):
     t = "male"
 if re.search(ms, t):
@@ -84,7 +101,7 @@ if re.search(mrs, t):
 
 # Replace any periods with a space
 per_space = r'\.'
-res = re.sub(per_space, ' ', t)
+res = re.sub(per_space, ' ', n3 )
 print(res)
 
 #Doctor
@@ -128,5 +145,5 @@ for i in split_4:
             print("Its a string of 3 char")
          
 
-
 """
+
