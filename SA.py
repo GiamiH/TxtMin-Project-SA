@@ -7,6 +7,7 @@ Created on Wed May  8 20:00:52 2024
 
 import json
 import re
+import csv
 
 # open file
 with open('Iphone11-R.json', 'r') as file:
@@ -66,6 +67,16 @@ ms = r'\bMs\.\b'
 mrs = r'\bMrs\.\b'
 # Dr -> remove doctor & apply corpus
 dr = r'\bDr\.\b'
+
+# Opens male name csv
+file_male = "Indian-Male-Names.csv"
+male_n = []
+
+with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
+    csv_reader = csv.DictReader(file)
+    for row in csv_reader:
+        male_n.append(row)
+
 
 
 # classifies gender with ms/mr
