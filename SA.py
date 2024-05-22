@@ -75,7 +75,11 @@ male_n = []
 with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
-        male_n.append(row)
+        full_n = row["name"].split()
+        if full_n:   
+            first_n = full_n[0]
+            male_n.append(first_n)
+
 
 
 
@@ -94,6 +98,7 @@ for r in data:
         n1 = re.sub(p1, '', n)
         n2 = re.sub(p2, '', n1)
         n3 = re.sub(p3, ' ', n2).strip()
+        
         
         """Corpus found is in c so we have to see if there is an adaptable 
         version of it for python"""
