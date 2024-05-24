@@ -75,6 +75,9 @@ numbers = r'\d'
 
 """Filter numbers to names testing regex"""
 
+### APPLY ON NAMES DOWN ON LINE 111 extra elif remove from data or in btn ###
+### step LINE 101
+
 stre = ["2ade3","2fdad","sdaf","sd4fda","fda"]
 
 for i in stre:
