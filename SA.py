@@ -70,7 +70,16 @@ dr = r'\bDr\.\b'
 # Pattern for @
 at = r'/@'
 #Pattern for names with numbers
+numbers = r'\d'
 
+
+"""Filter numbers to names testing regex"""
+
+stre = ["2ade3","2fdad","sdaf","sd4fda","fda"]
+
+for i in stre:
+    if not re.search(numbers,i):
+        print("No numbers:" + i)
 
 # Apply first name get func to main data and lowercase
 # Opens male name csv
