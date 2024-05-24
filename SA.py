@@ -67,7 +67,12 @@ ms = r'\bMs\.\b'
 mrs = r'\bMrs\.\b'
 # Dr -> remove doctor & apply corpus
 dr = r'\bDr\.\b'
+# Pattern for @
+at = r'/@'
+#Pattern for names with numbers
 
+
+# Apply first name get func to main data and lowercase
 # Opens male name csv
 file_male = "Indian-Male-Names.csv"
 male_n = []
@@ -76,6 +81,7 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
         full_n = row["name"].split()
+        # checks if empty
         if full_n:   
             first_n = full_n[0]
             male_n.append(first_n)
@@ -105,11 +111,12 @@ for r in data:
 
 
 #First Names
+names_list = []
 for l in data:
-    full_n = l["profile_name"]
-    w = full_n.split()
-    name = w[0]
-    l["profile_name"] = name
+    full = l["profile_name"].split()
+    if full:
+        name_prof = full[0]
+        names_list.append(name_prof)
 
 
 
@@ -118,8 +125,8 @@ for l in data:
 file_names = "names.txt"
 
 with open(file_names, 'w', encoding = 'utf-8') as f:
-    for r in data:
-        p = r["profile_name"]
+    for l in data:
+        p = l["profile_name"]
         f.write(p + "\n")
 ##############################################################################
 # May need to insert this above
