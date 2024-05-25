@@ -32,7 +32,6 @@ for r in og:
 #Pattern for names with numbers
 numbers = r'\d'
 
-
 # Removes any review w/ Amz Cus and names with 1 & 2 char
 data = []
 for r in og:
@@ -71,53 +70,26 @@ ms = r'\bMiss\s\b'
 # Dr -> remove doctor & apply corpus
 dr1 = r'\bDr\.\b'
 dr2 = r'\bDr\.\s\b'
-dr3 = r'\bDR\s\b'
+dr3 = r'\bDr\s\b'
 dr4 = r'\bdr\.\s\s\s\b'
+dr5 = r'\bDR\s\b'
 # Pattern for @
-at = r'/@'
+at = r'@'
+underscore = r'_'
 
-## TEsting new erxpression for miss and mr
-# dr.   rachna 
-names_w = ["Mr . ANUP KUMAR MISHRA", "Dr.Reddee", "DR SIDDHARTH SAXENA", "Miss Preet", 
-               "Dr. Sampat  Kumar R"," Dr.Indrani Debnath"," MR Dhilip",
-               "dr.   rachna " ]
+stre = ["D.fda_dfa", "asdfasd", "@fdafd_fdad", "fda@fad"]
 
-for i in names_w:
-    if re.search(mr1,i) or re.search(mr2,i):
-      #  print("male")
-    elif re.search(ms, i) :
-       # print("female")
-    elif  re.search(dr1, i):
-        n = re.sub(dr1, '', i)
-        n3 = re.sub(p3, ' ', n).strip()
-       # print("WAS A DOC " + n3)
-    elif re.search(dr2, i) :
-        n = re.sub(dr2, '', i)
-        n3 = re.sub(p3, ' ', n).strip()
-       # print("WAS A DOC " + n3)
-    elif re.search(dr3, i) :
-        n = re.sub(dr3, '', i)
-        n3 = re.sub(p3, ' ', n).strip()
-      #  print("WAS A DOC " + n3)
-    elif re.search(dr4, i):
-        n = re.sub(dr4, '', i)
-        n3 = re.sub(p3, ' ', n).strip()
-       # print("WAS A DOC " + n3)
-    else:
-        #general
-        print("not an option")
-        
+for i in stre:
+    n6 = re.sub(at, ' ', i)
+    n7 = re.sub(underscore, ' ', n6)
+    print(n7)
 
-
-
-
-"""
 # Apply first name get func to main data and lowercase
 # Opens male name csv
 file_male = "Indian-Male-Names.csv"
 male_n = []
-"""
-"""
+
+
 with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
@@ -126,49 +98,65 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
         if full_n:   
             first_n = full_n[0]
             male_n.append(first_n)
-"""
+
+
 
 # classifies gender with ms/mr
 
 for r in data:
     prof_name = r["profile_name"]
-    if re.search(mr1,prof_name) or re.search(mr2,prof_name):
+    if re.search(mr1,prof_name):
         r["gender"] = "male"
-
+        n = re.sub(mr1, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
+    elif re.search(mr2,prof_name):
+        r["gender"] = "male"
+        n = re.sub(mr2, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
     elif re.search(ms, prof_name) :
         r["gender"] = "female"
-       # print("female")
+        n = re.sub(ms, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
     elif  re.search(dr1, prof_name):
         n = re.sub(dr1, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
-       # print("WAS A DOC " + n3)
     elif re.search(dr2, prof_name) :
         n = re.sub(dr2, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
-       # print("WAS A DOC " + n3)
     elif re.search(dr3, prof_name) :
         n = re.sub(dr3, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
-      #  print("WAS A DOC " + n3)
     elif re.search(dr4, prof_name):
         n = re.sub(dr4, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
-       # print("WAS A DOC " + n3)
+    elif re.search(dr5, prof_name):
+        n = re.sub(dr5, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
     else:
         r["gender"] = "unknown"
         n1 = re.sub(p1, '', prof_name)
         n2 = re.sub(p2, '', n1)
         n3 = re.sub(p3, ' ', n2).strip()
-        r["profile_name"] = n3
-    
-      #  Corpus found is in c so we have to see if there is an adaptable 
-       # version of it for python
+        n4 = re.sub(at, ' ', n3)
+        n5 = re.sub(underscore, ' ', n4)
+        r["profile_name"] = n5
 
+# Created this file in order to check that all the filtering is done correctly    
+file_names = "names.txt"
 
+with open(file_names, 'w', encoding = 'utf-8') as f:
+    for per in data:
+        nam = per["profile_name"]
+        f.write(nam + "\n")
+        
 #First Names
 names_list = []
 for l in data:
@@ -177,21 +165,21 @@ for l in data:
         name_prof = full[0]
         names_list.append(name_prof)
 
-
-
-
-# Created this file in order to check that all the filtering is done correctly    
-file_names = "names.txt"
+file_names = "final_names.txt"
 
 with open(file_names, 'w', encoding = 'utf-8') as f:
-    for l in data:
-        p = l["profile_name"]
-        f.write(p + "\n")
+    for per in names_list:
+        per = per.lower()
+        per = per.capitalize()
+        f.write(per + "\n")
+        
+
+
 ##############################################################################
 # May need to insert this above
 
-"""
+
 per_space = r'\.'
 res = re.sub(per_space, ' ', n3 )
 print(res)
-"""
+
