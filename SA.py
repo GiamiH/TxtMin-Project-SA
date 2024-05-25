@@ -93,7 +93,8 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
         # checks if empty
         if full_n:   
             first_n = full_n[0]
-            male_n.append(first_n)
+            first_name = first_n.capitalize()
+            male_n.append(first_name)
 
 
 
@@ -176,4 +177,14 @@ with open(file_names, 'w', encoding = 'utf-8') as f:
         per = per.capitalize()
         f.write(per + "\n")
 
+# Comparing if males from the 14K list
+convert = 0
+for name in male_n:
+    indx=0
+    for n in names_list:
+        if name == n:    
+            data[indx]["gender"] = "male"
+            convert+=1
+        indx+=1
 
+print(convert)
