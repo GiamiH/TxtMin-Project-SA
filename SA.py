@@ -129,24 +129,44 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
 """
 
 # classifies gender with ms/mr
+
 for r in data:
     prof_name = r["profile_name"]
-    
-    if re.search(mr,prof_name):
-        gender = "male"
-    elif re.search(ms, prof_name) or re.search(mrs, prof_name):
-        gender = "female"
+    if re.search(mr1,prof_name) or re.search(mr2,prof_name):
+        r["gender"] = "male"
+
+    elif re.search(ms, prof_name) :
+        r["gender"] = "female"
+       # print("female")
+    elif  re.search(dr1, prof_name):
+        n = re.sub(dr1, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
+       # print("WAS A DOC " + n3)
+    elif re.search(dr2, prof_name) :
+        n = re.sub(dr2, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
+       # print("WAS A DOC " + n3)
+    elif re.search(dr3, prof_name) :
+        n = re.sub(dr3, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
+      #  print("WAS A DOC " + n3)
+    elif re.search(dr4, prof_name):
+        n = re.sub(dr4, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
+       # print("WAS A DOC " + n3)
     else:
-        n = re.sub(dr, '', prof_name)
-        r["profile_name"] = n
-    
-        n1 = re.sub(p1, '', n)
+        r["gender"] = "unknown"
+        n1 = re.sub(p1, '', prof_name)
         n2 = re.sub(p2, '', n1)
         n3 = re.sub(p3, ' ', n2).strip()
-        
+        r["profile_name"] = n3
     
-        Corpus found is in c so we have to see if there is an adaptable 
-        version of it for python
+      #  Corpus found is in c so we have to see if there is an adaptable 
+       # version of it for python
 
 
 #First Names
@@ -158,7 +178,7 @@ for l in data:
         names_list.append(name_prof)
 
 
-"""
+
 
 # Created this file in order to check that all the filtering is done correctly    
 file_names = "names.txt"
