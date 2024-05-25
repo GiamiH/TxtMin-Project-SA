@@ -29,12 +29,16 @@ for r in og:
     r["review_rating"] = int(s[0])
 
 
+#Pattern for names with numbers
+numbers = r'\d'
+
+
 # Removes any review w/ Amz Cus and names with 1 & 2 char
 data = []
 for r in og:
     s = r["profile_name"]
     if (s != "Amazon customer" and s!= "" and s!="amazonUser" and
-            s != "Amazon Customer" and not s[0].isdigit() and len(s) > 2):
+            s != "Amazon Customer" and not re.search(numbers,s) and len(s) > 2):
         data.append(r)
 
 # Helpful Count is an int
@@ -60,35 +64,60 @@ p2 = r'\b[a-zA-Z]\b'
 # Many spaces
 p3 = r'\s+'
 # Mr -> male
-mr = r'\bMr\.\b'
+mr1 = r'\bMr\b'
+mr2 = r'\bMR\b'
 # Ms -> female
-ms = r'\bMs\.\b'
-# Mrs -> female
-mrs = r'\bMrs\.\b'
+ms = r'\bMiss\s\b'
 # Dr -> remove doctor & apply corpus
-dr = r'\bDr\.\b'
+dr1 = r'\bDr\.\b'
+dr2 = r'\bDr\.\s\b'
+dr3 = r'\bDR\s\b'
+dr4 = r'\bdr\.\s\s\s\b'
 # Pattern for @
 at = r'/@'
-#Pattern for names with numbers
-numbers = r'\d'
+
+## TEsting new erxpression for miss and mr
+# dr.   rachna 
+names_w = ["Mr . ANUP KUMAR MISHRA", "Dr.Reddee", "DR SIDDHARTH SAXENA", "Miss Preet", 
+               "Dr. Sampat  Kumar R"," Dr.Indrani Debnath"," MR Dhilip",
+               "dr.   rachna " ]
+
+for i in names_w:
+    if re.search(mr1,i) or re.search(mr2,i):
+      #  print("male")
+    elif re.search(ms, i) :
+       # print("female")
+    elif  re.search(dr1, i):
+        n = re.sub(dr1, '', i)
+        n3 = re.sub(p3, ' ', n).strip()
+       # print("WAS A DOC " + n3)
+    elif re.search(dr2, i) :
+        n = re.sub(dr2, '', i)
+        n3 = re.sub(p3, ' ', n).strip()
+       # print("WAS A DOC " + n3)
+    elif re.search(dr3, i) :
+        n = re.sub(dr3, '', i)
+        n3 = re.sub(p3, ' ', n).strip()
+      #  print("WAS A DOC " + n3)
+    elif re.search(dr4, i):
+        n = re.sub(dr4, '', i)
+        n3 = re.sub(p3, ' ', n).strip()
+       # print("WAS A DOC " + n3)
+    else:
+        #general
+        print("not an option")
+        
 
 
-"""Filter numbers to names testing regex"""
 
-### APPLY ON NAMES DOWN ON LINE 111 extra elif remove from data or in btn ###
-### step LINE 101
 
-stre = ["2ade3","2fdad","sdaf","sd4fda","fda"]
-
-for i in stre:
-    if not re.search(numbers,i):
-        print("No numbers:" + i)
-
+"""
 # Apply first name get func to main data and lowercase
 # Opens male name csv
 file_male = "Indian-Male-Names.csv"
 male_n = []
-
+"""
+"""
 with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
     csv_reader = csv.DictReader(file)
     for row in csv_reader:
@@ -97,9 +126,7 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
         if full_n:   
             first_n = full_n[0]
             male_n.append(first_n)
-
-
-
+"""
 
 # classifies gender with ms/mr
 for r in data:
@@ -117,9 +144,9 @@ for r in data:
         n2 = re.sub(p2, '', n1)
         n3 = re.sub(p3, ' ', n2).strip()
         
-        
-        """Corpus found is in c so we have to see if there is an adaptable 
-        version of it for python"""
+    
+        Corpus found is in c so we have to see if there is an adaptable 
+        version of it for python
 
 
 #First Names
@@ -131,7 +158,7 @@ for l in data:
         names_list.append(name_prof)
 
 
-
+"""
 
 # Created this file in order to check that all the filtering is done correctly    
 file_names = "names.txt"
