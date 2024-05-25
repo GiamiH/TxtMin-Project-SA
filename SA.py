@@ -62,6 +62,8 @@ p1 = r'\b[a-zA-Z]\.\s?'
 p2 = r'\b[a-zA-Z]\b'
 # Many spaces
 p3 = r'\s+'
+# Dots
+p4 = r'\.'
 # Mr -> male
 mr1 = r'\bMr\b'
 mr2 = r'\bMR\b'
@@ -73,16 +75,10 @@ dr2 = r'\bDr\.\s\b'
 dr3 = r'\bDr\s\b'
 dr4 = r'\bdr\.\s\s\s\b'
 dr5 = r'\bDR\s\b'
+er = r'\bEr\.\s\b'
 # Pattern for @
 at = r'@'
 underscore = r'_'
-
-stre = ["D.fda_dfa", "asdfasd", "@fdafd_fdad", "fda@fad"]
-
-for i in stre:
-    n6 = re.sub(at, ' ', i)
-    n7 = re.sub(underscore, ' ', n6)
-    print(n7)
 
 # Apply first name get func to main data and lowercase
 # Opens male name csv
@@ -102,7 +98,7 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
 
 
 # classifies gender with ms/mr
-
+full_names_filt = []
 for r in data:
     prof_name = r["profile_name"]
     if re.search(mr1,prof_name):
@@ -140,22 +136,29 @@ for r in data:
         n = re.sub(dr5, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
+    elif re.search(er, prof_name):
+        n = re.sub(er, '', prof_name)
+        n3 = re.sub(p3, ' ', n).strip()
+        r["profile_name"] = n3
     else:
         r["gender"] = "unknown"
         n1 = re.sub(p1, '', prof_name)
         n2 = re.sub(p2, '', n1)
         n3 = re.sub(p3, ' ', n2).strip()
-        n4 = re.sub(at, ' ', n3)
-        n5 = re.sub(underscore, ' ', n4)
-        r["profile_name"] = n5
+        n4 = re.sub(p4, "", n3)
+        n5 = re.sub(at, ' ', n4)
+        n6 = re.sub(underscore, ' ', n5)
+        r["profile_name"] = n6
+    full_names_filt.append(r["profile_name"])
 
 # Created this file in order to check that all the filtering is done correctly    
-file_names = "names.txt"
+file_names = "full_names.txt"
 
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in data:
         nam = per["profile_name"]
-        f.write(nam + "\n")
+        if nam.strip():
+            f.write(nam + "\n")
         
 #First Names
 names_list = []
@@ -165,21 +168,12 @@ for l in data:
         name_prof = full[0]
         names_list.append(name_prof)
 
+# final_names
 file_names = "final_names.txt"
-
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in names_list:
         per = per.lower()
         per = per.capitalize()
         f.write(per + "\n")
-        
 
-
-##############################################################################
-# May need to insert this above
-
-
-per_space = r'\.'
-res = re.sub(per_space, ' ', n3 )
-print(res)
 
