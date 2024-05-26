@@ -500,7 +500,7 @@ Rashmi
 Paresh
 Surya
 Vikram
-Sasikumar.
+Sasikumar
 Rishikesh
 Sahil
 Raushan
@@ -655,7 +655,7 @@ Lavi
 Mayur
 Kashvi
 Sushil
-Ganesh.raman
+Ganeshraman
 Deepak
 Kunal
 Priyanshu
@@ -1025,7 +1025,7 @@ Shubham
 Deeptha
 Sulay
 Shekhar
-Jyotsna.
+Jyotsna
 Avishek
 Kapil
 Jaideep
@@ -1033,7 +1033,7 @@ Jitender
 Gopu
 Jatin
 Chetan
-Roshitha⚡️
+Roshitha
 Siddharth
 Kjr
 Mohammed
@@ -1181,7 +1181,7 @@ Mohan
 Sam
 Pavithiran
 Ayaan
-Vinodh.
+Vinodh
 Borra
 Lucifer
 Rakesh
@@ -1298,7 +1298,7 @@ Mayank
 Vasanthi
 Arun
 Atul
-Er.
+Er
 Tushar
 Ketaki
 Ankur
@@ -1426,7 +1426,7 @@ Gaurav
 Harsh
 Parameskumar
 Abhijit
-Meghna.
+Meghna
 Sachin
 Sunil
 Jashan
@@ -1453,7 +1453,7 @@ Ajay
 Dev
 Packiamary
 Manzoor
-.
+Anup
 Martin
 Tajuddin
 Venky
@@ -1584,7 +1584,7 @@ Onkar
 Viren
 Asit
 Pankajkumar
-Md.jahangir
+Mdjahangir
 Viraat
 Shashank
 Anil
@@ -1692,7 +1692,7 @@ Karthik
 Paras
 Satish
 Radhika
-Saravanan.
+Saravanan
 Satya
 Shreya
 Nazia
@@ -1771,7 +1771,7 @@ Hemang
 Krunal
 Mounika
 Mdb
-Babu.abraham
+Babuabraham
 Sitaram
 Rajput
 Rahul
@@ -2053,7 +2053,7 @@ Siva
 Ashish
 Shubham
 Rachna
-Adv.
+Adv
 Sandeep
 Sarthak
 Amit
@@ -2321,7 +2321,7 @@ Punit
 Aniket
 Ajay
 Michael
-Maheshagouda.patil
+Maheshagoudapatil
 Joys
 Amit
 Sidhartha
@@ -2359,7 +2359,7 @@ Muhammed
 Manoranjan
 Arun
 Anilkumar
-Ramprabhu.
+Ramprabhu
 Balaji
 Balaji
 Imran
@@ -2430,7 +2430,7 @@ Sunkara
 Vinay
 Tejswaroop
 Dev
-Ruchit.kenny
+Ruchitkenny
 Radha
 Keshav'
 Rajesh
@@ -2456,7 +2456,7 @@ Deepak
 Anees
 Feroz
 Ranji
-Rajesh.
+Rajesh
 Tushar
 Vishal
 Ashish
@@ -2472,7 +2472,7 @@ Satyanarayan
 Dhaval
 Deepak
 Amit
-Dayananda.
+Dayananda
 Maulik
 Suraj
 Harshit
@@ -2523,7 +2523,7 @@ Robin
 Sattwik
 Govind
 Pankaj
-Vish..
+Vish
 Shanmugapriya
 Manish
 Madhu
@@ -2713,7 +2713,7 @@ Harsh
 Shreyashree
 Sanjiv
 Dhalvirsingh
-Ramanamurthy.
+Ramanamurthy
 Pratik
 Shakti
 Biswajit
@@ -2782,7 +2782,7 @@ Willbert
 Manikanta
 Praveen
 Sagolsem
-Ch.
+Ch
 Kapileshwer
 Karthikeyan
 Jaikumar
@@ -2897,7 +2897,7 @@ Rahul
 Saqlain
 Radhanatha
 Aleem
-Er.
+Er
 Ravi
 Harsimran
 Krishna
@@ -3000,7 +3000,7 @@ Mohit
 Sonu
 Hardik
 Sandeep
-Prince...
+Prince
 Siva
 Manoj
 Peter
@@ -3138,7 +3138,7 @@ Faiyaz
 Swati
 Tapan
 Rohit
-Suman.
+Suman
 Jeevan
 Mohammed
 Shabeena
@@ -3474,7 +3474,7 @@ Vikas
 Mallesh
 Saurav
 Renil
-Sudhakar.
+Sudhakar
 Dinesh
 Balvinder
 Pankaj
@@ -3525,10 +3525,10 @@ Ankur
 Danam
 Venkateshwaran
 Sandeep
-Dr.
+Dr
 Riyazahmed
 Arun
-Manjunatha.
+Manjunatha
 Amrit
 Ankur
 Sachiinkumar
@@ -3562,7 +3562,7 @@ Harish
 Sai
 Gracy
 Harjinder
-Jatin.chhikara
+Jatinchhikara
 Vijay
 Vignesh
 Jai
@@ -3600,7 +3600,7 @@ Harikrishnan
 Santosh
 Bodapatla
 Rohan
-Capt.arvind
+Captarvind
 Udayashankar
 Jithish
 Alok
@@ -3630,7 +3630,7 @@ Senthilkumar
 Prince
 Ranita
 Ajay
-Hridul.
+Hridul
 Deepak
 Ankur
 Preeti
@@ -3678,7 +3678,7 @@ Bharath
 Amanpreet
 Rajat
 Aravind
-Godly.jiji
+Godlyjiji
 Wassay
 Munish
 Kapil
@@ -3829,7 +3829,7 @@ Pravin
 Raghav
 Annu
 Ankur
-Kirandas.
+Kirandas
 Gupta
 Anand
 Arnav
@@ -3941,7 +3941,7 @@ Valaram
 Yalenbabu
 Rishav
 Amzad
-Dara.sekar
+Darasekar
 Gaurav
 Satish
 Aditya
@@ -4041,7 +4041,7 @@ Santosh
 Sreedhar
 Puransingh
 Sunil
-Nethra.
+Nethra
 Arvind
 Bhargav
 Sitafal
