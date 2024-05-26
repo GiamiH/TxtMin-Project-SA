@@ -8,7 +8,6 @@ Created on Wed May  8 20:00:52 2024
 import json
 import re
 import csv
-import emoji
 
 # open file
 with open('Iphone11-R.json', 'r') as file:
@@ -119,26 +118,32 @@ for r in data:
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
     elif  re.search(dr1, prof_name):
+        r["gender"] = "unknown"
         n = re.sub(dr1, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
     elif re.search(dr2, prof_name) :
+        r["gender"] = "unknown"
         n = re.sub(dr2, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
     elif re.search(dr3, prof_name) :
+        r["gender"] = "unknown"
         n = re.sub(dr3, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
     elif re.search(dr4, prof_name):
+        r["gender"] = "unknown"
         n = re.sub(dr4, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
     elif re.search(dr5, prof_name):
+        r["gender"] = "unknown"
         n = re.sub(dr5, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
     elif re.search(er, prof_name):
+        r["gender"] = "unknown"
         n = re.sub(er, '', prof_name)
         n3 = re.sub(p3, ' ', n).strip()
         r["profile_name"] = n3
@@ -167,35 +172,124 @@ with open(file_names, 'w', encoding = 'utf-8') as f:
         
 #First Names
 names_list = []
-for l in data:
+index = 0
+del_empty =[]
+
+for l in data: 
     full = l["profile_name"].split()
     if full:
         name_prof = full[0]
+        if name_prof == "Roshitha⚡️":
+            name_prof = "Roshitha"
         names_list.append(name_prof)
+    else:
+        del_empty.append(index)
+    
+    index +=1
 
-# filters emoji
-final_name_list = []
-for n in names_list:
-    for indx in range(len(n)):
-        if n[indx] in emoji.UNICODE_EMOJI['en']:
-            n = n[:indx] 
-    final_name_list.append(n)
-        
+def del_emp():
+    indx_del  = sorted(del_empty, reverse=True)
+    
+    for i in indx_del:
+        del data[i]
+del_emp()
+
 # final_names
-file_names = "final_names2.txt"
+l = 0
+file_names = "FINAL_FIRST_NAME.txt"
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in names_list:
         per = per.lower()
         per = per.capitalize()
         per = re.sub(p4, "", per)
         f.write(per + "\n")
+        l+=1    
+        
+print(l)
+      
+###################### GENDER SEPERATION ######################################       
+### open txt first unisex, male and female if still unkonn count them
+unisex_f = "unisex_names.txt"
+male_f = "male_names_2.txt"
+female_f = "female_names.txt"
+unisex_nam = []
+male_nam = []
+female_nam = []
 
-# Comparing if males from the 14K list
-for name in male_n:
-    indx=0
-    for n in names_list:
-        if name == n:    
-            data[indx]["gender"] = "male"
-        indx+=1
+def read_file(path):
+    with open(path, 'r') as file:
+        for line in file:
+            if path == unisex_f:       
+                unisex_nam.append(line.strip())
+            elif path == male_f:
+                male_nam.append(line.strip())
+            else:       
+                female_nam.append(line.strip())
+                
+read_file(unisex_f)
+read_file(male_f)
+read_file(female_f)
 
 
+# # Comparing if males from the 14K list
+# for name in male_n:
+#     indx=0
+#     for n in names_list:
+#         if name == n:    
+#             data[indx]["gender"] = "male"
+#         indx+=1
+
+data_del = []
+
+def detect_uni(u):
+    for name in u:
+        indx=0
+        for n in names_list:
+            if name == n:
+                data_del.append(indx)
+            indx+=1
+        
+def del_uni():
+    data_del_f = sorted(data_del, reverse=True)
+    for i in data_del_f:
+        del data[i]
+        del names_list[i]
+
+
+detect_uni(unisex_nam)
+del_uni()
+
+    
+
+def gen_nam(g_nam):
+    for gn in g_nam:
+        ind=0
+        for n in names_list:
+            if gn == n:    
+                if g_nam == female_nam:
+                    data[ind]["gender"] = "female"
+                elif g_nam == male_nam or g_nam == male_n :
+                    data[ind]["gender"] = "male"            
+                    
+            ind+=1
+
+
+gen_nam(male_nam)
+gen_nam(male_n)
+gen_nam(female_nam)
+
+
+uni = 0
+m = 0
+f = 0
+unk = 0
+for r in data:
+    g = r["gender"]
+    
+    if g == "male":
+        m +=1 
+    elif g == "female":
+        f +=1 
+        
+print(f"Male: {m}")
+print(f"Female: {f}")
