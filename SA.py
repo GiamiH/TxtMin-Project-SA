@@ -8,6 +8,7 @@ Created on Wed May  8 20:00:52 2024
 import json
 import re
 import csv
+import emoji
 
 # open file
 with open('Iphone11-R.json', 'r') as file:
@@ -152,14 +153,17 @@ for r in data:
         r["profile_name"] = n6
     full_names_filt.append(r["profile_name"])
 
+
+
 # Created this file in order to check that all the filtering is done correctly    
-file_names = "full_names.txt"
+file_names = "full_names2.txt"
 
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in data:
         nam = per["profile_name"]
         if nam.strip():
-            f.write(nam + "\n")
+            n4 = re.sub(p4, "", nam)
+            f.write(n4 + "\n")
         
 #First Names
 names_list = []
@@ -169,22 +173,29 @@ for l in data:
         name_prof = full[0]
         names_list.append(name_prof)
 
+# filters emoji
+final_name_list = []
+for n in names_list:
+    for indx in range(len(n)):
+        if n[indx] in emoji.UNICODE_EMOJI['en']:
+            n = n[:indx] 
+    final_name_list.append(n)
+        
 # final_names
-file_names = "final_names.txt"
+file_names = "final_names2.txt"
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in names_list:
         per = per.lower()
         per = per.capitalize()
+        per = re.sub(p4, "", per)
         f.write(per + "\n")
 
 # Comparing if males from the 14K list
-convert = 0
 for name in male_n:
     indx=0
     for n in names_list:
         if name == n:    
             data[indx]["gender"] = "male"
-            convert+=1
         indx+=1
 
-print(convert)
+
