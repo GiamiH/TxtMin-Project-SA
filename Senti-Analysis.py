@@ -2,6 +2,7 @@ import pandas as pd
 from textblob import TextBlob
 from transformers import pipeline
 import json
+from collections import Counter
 
 with open('Iphone11-R.json', 'r') as file:
     data = json.load(file)
