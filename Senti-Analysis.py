@@ -37,11 +37,11 @@ def analyze_word_repetition_by_gender(data, gender):
     unique_words = len(word_counter)
     repeated_words = sum(count - 1 for count in word_counter.values() if count > 1)
 
-    print(f"Total unique words: {unique_words}")
-    print(f"Total repeated words: {repeated_words}")
+    print(f"Total unique words for {gender}: {unique_words}")
+    print(f"Total repeated words for {gender}: {repeated_words}")
 
     repetition_ratio = repeated_words / unique_words
-    print(f"Repetition ratio: {repetition_ratio:.2f}")
+    print(f"Repetition ratio for {gender}: {repetition_ratio:.2f}")
 
     return word_counter
 
@@ -52,12 +52,16 @@ if __name__ == "__main__":
         for row in reader:
             data.append(row)
 
-# Analyze word repetition for each gender
-genders = ['male', 'female']
-for gender in genders:
-    print(f"\n{gender} reviews:")
-    word_counter = analyze_word_repetition_by_gender(data, gender)
+    # Analyze word repetition for each gender
+    genders = ['male', 'female']
+    word_counters = {}
+    for gender in genders:
+        print(f"\n{gender} reviews:")
+        word_counters[gender] = analyze_word_repetition_by_gender(data, gender)
 
-# Print the most common words for each gender
-print(f"Most common words:")
-print(word_counter.most_common(10))
+    # Print the most common words for each gender
+    print(f"\nMost common words for male reviews:")
+    print(word_counters['male'].most_common(10))
+
+    print(f"\nMost common words for female reviews:")
+    print(word_counters['female'].most_common(10))
