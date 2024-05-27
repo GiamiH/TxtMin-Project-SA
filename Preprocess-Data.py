@@ -303,21 +303,37 @@ m = 0
 f = 0
 unk = 0
 
+rev_n = set()
 final_data_g = []
-elem = 0
 for r in data:
-    g = r["gender"]
-    rev = r["review"]
-    if g == "male" and rev != "NOTE:":
-        final_data_g.append(data[elem])
-        m +=1 
-    elif g == "female":
-        f +=1 
-        final_data_g.append(data[elem])
+    rev = r["review_title"]
+    if rev not in rev_n:
+        g = r["gender"]   
+    if g in ["male", "female"]:
+        final_data_g.append(r)
+        if g == "female":
+            f +=1 
+        elif g == "male":
+            m +=1 
     else:
         unk +=1
-    elem+=1
+    rev_n.add(rev)
+
     
 print(f"Male: {m}")
 print(f"Female: {f}")
 print(f"unk: {unk}")
+
+
+
+    
+#################Saving Final REVIEW #########################################
+
+csv_f = "Final_Gendered_2.csv"
+
+header_cat = final_data_g[0].keys()
+
+with open(csv_f, mode='w', newline = '', encoding='utf-8') as file:
+    writer = csv.DictWriter(file, fieldnames=header_cat)
+    writer.writeheader()
+    writer.writerows(final_data_g)
