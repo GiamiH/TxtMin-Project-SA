@@ -96,6 +96,24 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
             first_name = first_n.capitalize()
             male_n.append(first_name)
 
+# Open Female csv
+# Opens male name csv
+file_female = "Indian-Female-Names.csv"
+female_n = []
+
+# remove single commas
+p5 = r'\,'
+with open(file_female, mode = 'r', newline = '', encoding='latin1') as file:
+    csv_reader = csv.DictReader(file)
+    for row in csv_reader:
+        full_n = row["name"].split()
+        # checks if empty
+        if full_n:   
+            first_n = full_n[0]
+            first_name = first_n.capitalize()
+            first_f = re.sub(p4, "", first_name)
+            first_f1 = re.sub(p5, "", first_name)
+            female_n.append(first_f1)
 
 
 # classifies gender with ms/mr
@@ -266,7 +284,7 @@ def gen_nam(g_nam):
         ind=0
         for n in names_list:
             if gn == n:    
-                if g_nam == female_nam:
+                if g_nam == female_nam or g_nam == female_n:
                     data[ind]["gender"] = "female"
                 elif g_nam == male_nam or g_nam == male_n :
                     data[ind]["gender"] = "male"            
@@ -274,22 +292,32 @@ def gen_nam(g_nam):
             ind+=1
 
 
+
 gen_nam(male_nam)
-gen_nam(male_n)
 gen_nam(female_nam)
+gen_nam(male_n)
+gen_nam(female_n)
 
-
-uni = 0
+idk = 0
 m = 0
 f = 0
 unk = 0
+
+final_data_g = []
+elem = 0
 for r in data:
     g = r["gender"]
-    
-    if g == "male":
+    rev = r["review"]
+    if g == "male" and rev != "NOTE:":
+        final_data_g.append(data[elem])
         m +=1 
     elif g == "female":
         f +=1 
-        
+        final_data_g.append(data[elem])
+    else:
+        unk +=1
+    elem+=1
+    
 print(f"Male: {m}")
 print(f"Female: {f}")
+print(f"unk: {unk}")
