@@ -16,4 +16,8 @@ reviews_df['sentiment'] = reviews_df['review_text'].apply(get_sentiment)
 # Classify the sentiment
 reviews_df['sentiment_label'] = reviews_df['sentiment'].apply(lambda x: 'positive' if x > 0 else ('negative' if x < 0 else 'neutral'))
 sentiment_counts = reviews_df.groupby(['gender', 'sentiment_label']).size().unstack(fill_value=0)
-print(sentiment_counts)
+# print(sentiment_counts)
+
+average_rating = reviews_df.groupby('gender')['review_rating'].mean()
+average_sentiment_scores = reviews_df.groupby('gender')['sentiment'].mean()
+print(average_sentiment_scores)
