@@ -32,7 +32,8 @@ average_rating = reviews_df.groupby('gender')['review_rating'].mean()
 average_sentiment_scores = reviews_df.groupby('gender')['sentiment'].mean()
 
 # List of words to exclude (common words)
-exclude_words = {'good', 'awesome', 'best', 'great', 'nice', 'excellent', 'amazing'}
+exclude_words = {'good'}
+# 'good', 'awesome', 'best', 'great', 'nice', 'excellent', 'amazing'
 
 def analyze_sentimental_words_by_gender(data, gender):
     word_counter = Counter()
@@ -147,3 +148,4 @@ if __name__ == "__main__":
     plt.ylabel('Word')
 
     plt.tight_layout()
+    plt.show()
