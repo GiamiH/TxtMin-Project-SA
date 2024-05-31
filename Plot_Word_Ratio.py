@@ -7,7 +7,7 @@ y = np.array([1926, 12067])
 
 font1 = {'family':'serif','color':'black','size':20}
 
-plt.title("Male Repition Ratio = 6.27", fontdict = font1)
+plt.title("Male Repition Ratio = 3.16", fontdict = font1)
 plt.bar(x,y)
 plt.show()
 
@@ -17,7 +17,7 @@ plt.savefig('Male_Word_Ratio.png')
 x2 = np.array(["Unique Words", "Repeated Words"])
 y2 = np.array([1475, 7407])
 
-plt.title("Female Repition Ratio = 5.02", fontdict = font1)
+plt.title("Female Repition Ratio = 2.49", fontdict = font1)
 plt.bar(x2, y2)
 plt.show()
 
