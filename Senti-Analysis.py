@@ -31,6 +31,13 @@ sentiment_counts = reviews_df.groupby(['gender', 'sentiment_label']).size().unst
 average_rating = reviews_df.groupby('gender')['review_rating'].mean()
 average_sentiment_scores = reviews_df.groupby('gender')['sentiment'].mean()
 
+# Calculate mode of review ratings for each gender
+mode_rating = reviews_df.groupby('gender')['review_rating'].agg(lambda x: x.mode().iloc[0])
+
+print(average_rating)
+print(mode_rating)
+print(average_sentiment_scores)
+
 # List of words to exclude (common words)
 exclude_words = {'good'}
 # 'good', 'awesome', 'best', 'great', 'nice', 'excellent', 'amazing'
@@ -66,7 +73,6 @@ def analyze_negative_words_by_gender(data, gender):
     negative_word_counter = Counter()
 
     for review in data:
-        # Check if the review belongs to the specified gender
         if review['gender'] == gender:
             words = re.findall(r'\b\w+\b', review['review_text'].lower())
             filtered_words = [word for word in words if word not in stop_words and word not in exclude_words]
@@ -148,4 +154,4 @@ if __name__ == "__main__":
     plt.ylabel('Word')
 
     plt.tight_layout()
-    plt.show()
+
