@@ -154,6 +154,8 @@ if __name__ == "__main__":
     plt.ylabel('Word')
 
     plt.tight_layout()
+
+
 # Word Count Analysis
 # aiding source: https://www.w3schools.com/python/ref_string_maketrans.asp
 
