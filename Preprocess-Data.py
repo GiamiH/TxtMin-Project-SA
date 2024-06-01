@@ -188,7 +188,7 @@ with open(file_names, 'w', encoding = 'utf-8') as f:
             n4 = re.sub(p4, "", nam)
             f.write(n4 + "\n")
         
-#First Names
+# Deletes First Names that are null
 names_list = []
 index = 0
 del_empty =[]
@@ -232,6 +232,7 @@ unisex_nam = []
 male_nam = []
 female_nam = []
 
+# Reads files given
 def read_file(path):
     with open(path, 'r') as file:
         for line in file:
@@ -268,7 +269,7 @@ detect_uni(unisex_nam)
 del_uni()
 
     
-
+# Genderfies name
 def gen_nam(g_nam):
     for gn in g_nam:
         ind=0
@@ -289,6 +290,7 @@ gen_nam(male_n)
 gen_nam(female_n)
 
 
+# Gather the final data
 rev_n = set()
 final_data_g = []
 for r in data:
