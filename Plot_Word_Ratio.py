@@ -11,7 +11,7 @@ plt.title("Male Repition Ratio = 3.16", fontdict = font1)
 plt.bar(x,y)
 plt.show()
 
-#plt.savefig('Male_Word_Ratio.png')
+#plt.savefig('Male_Word_Ratio.png') --> Uncomment to save
 
 # Female Reviews 
 x2 = np.array(["Unique Words", "Repeated Words"])
@@ -21,4 +21,4 @@ plt.title("Female Repition Ratio = 2.49", fontdict = font1)
 plt.bar(x2, y2)
 plt.show()
 
-#plt.savefig('Female_Word_Ratio.png')
+#plt.savefig('Female_Word_Ratio.png') --> Uncomment to save
