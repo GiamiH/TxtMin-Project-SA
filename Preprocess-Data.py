@@ -82,7 +82,7 @@ underscore = r'_'
 
 # Apply first name get func to main data and lowercase
 # Opens male name csv
-file_male = "Indian-Male-Names.csv"
+file_male = "Processed_Data/Indian-Male-Names.csv"
 male_n = []
 
 
@@ -98,7 +98,7 @@ with open(file_male, mode = 'r', newline = '', encoding='latin1') as file:
 
 # Open Female csv
 # Opens male name csv
-file_female = "Indian-Female-Names.csv"
+file_female = "Processed_Data/Indian-Female-Names.csv"
 female_n = []
 
 # remove single commas
@@ -179,7 +179,7 @@ for r in data:
 
 
 # Created this file in order to check that all the filtering is done correctly    
-file_names = "full_names2.txt"
+file_names = "DEL.txt"
 
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in data:
@@ -213,23 +213,21 @@ def del_emp():
 del_emp()
 
 # final_names
-l = 0
-file_names = "FINAL_FIRST_NAME.txt"
+file_names = "FINAL_TEST.txt"
 with open(file_names, 'w', encoding = 'utf-8') as f:
     for per in names_list:
         per = per.lower()
         per = per.capitalize()
         per = re.sub(p4, "", per)
         f.write(per + "\n")
-        l+=1    
-        
-print(l)
+  
+    
       
 ###################### GENDER SEPERATION ######################################       
 ### open txt first unisex, male and female if still unkonn count them
-unisex_f = "unisex_names.txt"
-male_f = "male_names_2.txt"
-female_f = "female_names.txt"
+unisex_f = "Name_Dictionary/unisex_names.txt"
+male_f = "Name_Dictionary/male_names_2.txt"
+female_f = "Name_Dictionary/female_names.txt"
 unisex_nam = []
 male_nam = []
 female_nam = []
@@ -248,17 +246,9 @@ read_file(unisex_f)
 read_file(male_f)
 read_file(female_f)
 
-
-# # Comparing if males from the 14K list
-# for name in male_n:
-#     indx=0
-#     for n in names_list:
-#         if name == n:    
-#             data[indx]["gender"] = "male"
-#         indx+=1
-
 data_del = []
 
+# cleans unisex names
 def detect_uni(u):
     for name in u:
         indx=0
@@ -298,10 +288,6 @@ gen_nam(female_nam)
 gen_nam(male_n)
 gen_nam(female_n)
 
-idk = 0
-m = 0
-f = 0
-unk = 0
 
 rev_n = set()
 final_data_g = []
@@ -311,23 +297,12 @@ for r in data:
         g = r["gender"]   
     if g in ["male", "female"]:
         final_data_g.append(r)
-        if g == "female":
-            f +=1 
-        elif g == "male":
-            m +=1 
-    else:
-        unk +=1
+        
     rev_n.add(rev)
 
-    
-print(f"Male: {m}")
-print(f"Female: {f}")
-print(f"unk: {unk}")
-
-
 
     
-#################Saving Final REVIEW #########################################
+################# Saving Final REVIEW #########################################
 
 csv_f = "Final_Gendered_2.csv"
 
