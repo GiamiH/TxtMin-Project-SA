@@ -106,23 +106,23 @@ if __name__ == "__main__":
     female_df = pd.DataFrame(female_common_words, columns=['word', 'count'])
 
     # Plotting
-    plt.figure(figsize=(14, 7))
+#    plt.figure(figsize=(14, 7))
 
     # Male reviews
-    plt.subplot(1, 2, 1)
-    sns.barplot(x='count', y='word', data=male_df, palette='Blues_d')
-    plt.title('Most Common Sentimental Words in Male Reviews')
-    plt.xlabel('Count')
-    plt.ylabel('Word')
+#    plt.subplot(1, 2, 1)
+#    sns.barplot(x='count', y='word', data=male_df, palette='Blues_d')
+#    plt.title('Most Common Sentimental Words in Male Reviews')
+#    plt.xlabel('Count')
+#    plt.ylabel('Word')
 
     # Female reviews
-    plt.subplot(1, 2, 2)
-    sns.barplot(x='count', y='word', data=female_df, palette='Purples_d')
-    plt.title('Most Common Sentimental Words in Female Reviews')
-    plt.xlabel('Count')
-    plt.ylabel('Word')
+#    plt.subplot(1, 2, 2)
+#    sns.barplot(x='count', y='word', data=female_df, palette='Purples_d')
+#    plt.title('Most Common Sentimental Words in Female Reviews')
+#    plt.xlabel('Count')
+#    plt.ylabel('Word')
 
-    plt.tight_layout()
+#    plt.tight_layout()
 
 # Analyze negative words for each gender
     negative_word_counters = {}
@@ -137,21 +137,21 @@ if __name__ == "__main__":
     female_df = pd.DataFrame(female_negative_words, columns=['word', 'count'])
 
     # Plotting
-    plt.figure(figsize=(14, 7))
+#    plt.figure(figsize=(14, 7))
 
     # Male reviews
-    plt.subplot(1, 2, 1)
-    sns.barplot(x='count', y='word', data=male_df, palette='Blues_d')
-    plt.title('Most Common Negative Words in Male Reviews')
-    plt.xlabel('Count')
-    plt.ylabel('Word')
+ #   plt.subplot(1, 2, 1)
+ #   sns.barplot(x='count', y='word', data=male_df, palette='Blues_d')
+ #   plt.title('Most Common Negative Words in Male Reviews')
+ #   plt.xlabel('Count')
+ #   plt.ylabel('Word')
 
     # Female reviews
-    plt.subplot(1, 2, 2)
-    sns.barplot(x='count', y='word', data=female_df, palette='Purples_d')
-    plt.title('Most Common Negative Words in Female Reviews')
-    plt.xlabel('Count')
-    plt.ylabel('Word')
+ #   plt.subplot(1, 2, 2)
+ #   sns.barplot(x='count', y='word', data=female_df, palette='Purples_d')
+ #   plt.title('Most Common Negative Words in Female Reviews')
+ #   plt.xlabel('Count')
+ #   plt.ylabel('Word')
 
     plt.tight_layout()
 
@@ -168,3 +168,30 @@ for rev in reviews_df["review_text"]:
     w_c.append(rev_l)
 
 reviews_df["review_w_c"] = w_c
+
+# Calculate review lengths in words
+reviews_df['review_length'] = reviews_df['review_text'].apply(lambda x: len(x.split()))
+
+# Separate data by gender
+male_reviews = reviews_df[reviews_df['gender'] == 'male']
+female_reviews = reviews_df[reviews_df['gender'] == 'female']
+
+# Review lengths for male reviews
+plt.figure(figsize=(12, 6))
+sns.histplot(male_reviews['review_length'], bins=range(0, 201), kde=False)
+plt.title('Review Length Distribution for Male Reviews')
+plt.xlabel('Review Length (words)')
+plt.ylabel('Frequency')
+plt.xlim(0, 200)
+plt.grid(True)
+plt.show()
+
+# Review lengths for female reviews
+plt.figure(figsize=(12, 6))
+sns.histplot(female_reviews['review_length'], bins=range(0, 201), kde=False)
+plt.title('Review Length Distribution for Female Reviews')
+plt.xlabel('Review Length (words)')
+plt.ylabel('Frequency')
+plt.xlim(0, 200)
+plt.grid(True)
+plt.show()

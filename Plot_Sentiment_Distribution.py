@@ -11,7 +11,7 @@ plt.title("Female Sentiment Distribution", fontdict = font1)
 plt.pie(y, labels = mylabels)
 plt.show
 
-#plt.savefig('Female_Distribution.png')
+#plt.savefig('Female_Distribution.png') -> Uncomment to save
 
 
 # Male Sentiment Analysis Distribution 
@@ -22,4 +22,4 @@ plt.title("Male Sentiment Distribution", fontdict = font1)
 plt.pie(y2, labels = mylabels2)
 plt.show
 
-#plt.savefig('Male_Distribution.png')
+#plt.savefig('Male_Distribution.png') -> Uncomment to save
