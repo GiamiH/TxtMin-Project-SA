@@ -314,3 +314,8 @@ with open(csv_f, mode='w', newline = '', encoding='utf-8') as file:
     writer = csv.DictWriter(file, fieldnames=header_cat)
     writer.writeheader()
     writer.writerows(final_data_g)
+
+# Filter out entries with unknown gender
+data_filtered = [entry for entry in data if entry["gender"] != "unknown"]
+removed_entries = len(data) - len(data_filtered)
+data = data_filtered

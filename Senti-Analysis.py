@@ -38,7 +38,7 @@ print(average_rating)
 print(mode_rating)
 print(average_sentiment_scores)
 
-# List of words to exclude (common words)
+# List of words to exclude (extremely common word)
 exclude_words = {'good'}
 # 'good', 'awesome', 'best', 'great', 'nice', 'excellent', 'amazing'
 
@@ -47,7 +47,6 @@ def analyze_sentimental_words_by_gender(data, gender):
     sentimental_word_counter = Counter()
 
     for review in data:
-        # Check if the review belongs to the specified gender
         if review['gender'] == gender:
             words = re.findall(r'\b\w+\b', review['review_text'].lower())
             filtered_words = [word for word in words if word not in stop_words and word not in exclude_words]
@@ -98,7 +97,6 @@ if __name__ == "__main__":
         print(f"\n{gender} reviews:")
         sentimental_word_counters[gender] = analyze_sentimental_words_by_gender(data, gender)
 
-    # Prepare data for plotting
     male_common_words = sentimental_word_counters['male'].most_common(20)
     female_common_words = sentimental_word_counters['female'].most_common(20)
 
@@ -129,7 +127,6 @@ if __name__ == "__main__":
     for gender in genders:
         negative_word_counters[gender] = analyze_negative_words_by_gender(data, gender)
 
-    # Prepare data for plotting
     male_negative_words = negative_word_counters['male'].most_common(20)
     female_negative_words = negative_word_counters['female'].most_common(20)
 
@@ -172,7 +169,6 @@ reviews_df["review_w_c"] = w_c
 # Calculate review lengths in words
 reviews_df['review_length'] = reviews_df['review_text'].apply(lambda x: len(x.split()))
 
-# Separate data by gender
 male_reviews = reviews_df[reviews_df['gender'] == 'male']
 female_reviews = reviews_df[reviews_df['gender'] == 'female']
 
@@ -195,3 +191,25 @@ plt.ylabel('Frequency')
 plt.xlim(0, 200)
 plt.grid(True)
 plt.show()
+
+# Plotting sentiment scores for male reviews
+plt.figure(figsize=(12, 6))
+sns.histplot(male_reviews['sentiment'], bins=50, kde=True, stat='density')
+plt.title('Sentiment Score Distribution for Male Reviews')
+plt.xlabel('Sentiment Score')
+plt.ylabel('Relative Frequency')
+plt.grid(True)
+plt.show()
+
+# Plotting sentiment scores for female reviews
+plt.figure(figsize=(12, 6))
+sns.histplot(female_reviews['sentiment'], bins=50, kde=True, stat='density')
+plt.title('Sentiment Score Distribution for Female Reviews')
+plt.xlabel('Sentiment Score')
+plt.ylabel('Relative Frequency')
+plt.grid(True)
+plt.show()
+
+helpful_votes_by_gender_sentiment = reviews_df.groupby(['gender', 'sentiment_label'])['helpful_count'].sum().unstack(fill_value=0)
+
+print(helpful_votes_by_gender_sentiment)
