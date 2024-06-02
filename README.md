@@ -31,18 +31,19 @@ The dataset as one can see are from different phones however for the sake of the
 - update 2: May 20 
   - Sentiment Analysis - Giami
 - Interpreting the Results - Hannah 
-- Plot the Results - Hannah 
 - Presentation (May 28) - Everyone 
   - Background Information 
   - Key Findings 
   - Critical appraisal of project and results 
   - Connection of the project to course content  
 - Paper (due May 31st)
-  - Intro - Hannah
+  - Intro - Hannah & Giami
   - Methods - Maria and Giami
   - Results - Hannah
   - Discussion - Maria
-  - Conclusion/ Suggestion for future - Giami 
+  - Conclusion/ Suggestion for future - Giami & Hannah 
+
+  Note: We would like to comment that eventually our work overlapped each other and we worked with each other throughout the report, contributing even in parts we weren't assigned to in order to have a well-rounded and cohesive report. 
 
 ### Questions of Each Update
 Update 0:
