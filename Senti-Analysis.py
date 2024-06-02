@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+@author: giami
+"""
+
 import pandas as pd
 from textblob import TextBlob
 import csv
