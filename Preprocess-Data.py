@@ -8,6 +8,9 @@ Created on Wed May  8 20:00:52 2024
 import json
 import re
 import csv
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import words
 
 # open file
 with open('Iphone11-R.json', 'r') as file:
@@ -53,6 +56,15 @@ for r in data:
         r["helpful_count"] = int(n)
 
         s = r["helpful_count"]
+
+# Define function to filter out reviews with proper words
+def filter_reviews(review_text):
+    words_list = word_tokenize(review_text.lower())
+    valid_words = [word for word in words_list if word in words.words()]
+    return len(valid_words) > 0
+
+# Filter out reviews that do not contain proper words
+filtered_reviews = [review for review in data if filter_reviews(review["review_text"])]
 
 # Filters names
 

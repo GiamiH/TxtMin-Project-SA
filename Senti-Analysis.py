@@ -8,6 +8,7 @@ from nltk.corpus import stopwords
 import matplotlib.pyplot as plt
 import seaborn as sns
 import string 
+from sklearn.metrics import accuracy_score
 
 # Download the stop words list
 nltk.download('stopwords')
@@ -180,7 +181,6 @@ plt.xlabel('Review Length (words)')
 plt.ylabel('Frequency')
 plt.xlim(0, 200)
 plt.grid(True)
-plt.show()
 
 # Review lengths for female reviews
 plt.figure(figsize=(12, 6))
@@ -190,7 +190,6 @@ plt.xlabel('Review Length (words)')
 plt.ylabel('Frequency')
 plt.xlim(0, 200)
 plt.grid(True)
-plt.show()
 
 # Plotting sentiment scores for male reviews
 plt.figure(figsize=(12, 6))
@@ -199,7 +198,6 @@ plt.title('Sentiment Score Distribution for Male Reviews')
 plt.xlabel('Sentiment Score')
 plt.ylabel('Relative Frequency')
 plt.grid(True)
-plt.show()
 
 # Plotting sentiment scores for female reviews
 plt.figure(figsize=(12, 6))
@@ -208,8 +206,20 @@ plt.title('Sentiment Score Distribution for Female Reviews')
 plt.xlabel('Sentiment Score')
 plt.ylabel('Relative Frequency')
 plt.grid(True)
-plt.show()
 
 helpful_votes_by_gender_sentiment = reviews_df.groupby(['gender', 'sentiment_label'])['helpful_count'].sum().unstack(fill_value=0)
 
 print(helpful_votes_by_gender_sentiment)
+
+# Calculate accuracy
+manually_categorized_data = pd.read_csv("/Users/giamihuynh/Downloads/TxtMin-Project-SA-1/Processed_Data/manual_categorized_reviews2.csv")
+sampled_review_data = reviews_df.sample(n=100, random_state=42)
+
+manual_sentiment = manually_categorized_data["category"]
+predicted_sentiment = sampled_review_data["sentiment_label"]
+
+accuracy = accuracy_score(manual_sentiment, predicted_sentiment)
+print("Accuracy:", accuracy)
+sampled_review_data['predicted_sentiment'] = predicted_sentiment # add predicted sentiment
+
+# sampled_review_data.to_csv('sampled_review_data_with_predictions.csv', index=False) 
