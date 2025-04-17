@@ -50,3 +50,5 @@ Update 0:
 - We want to use a gender guesser library to guess the gender of the reviewer since most datasets do not provide that info. However, we are unsure of how it would approach names that could be used for males and females (ex. Jamie). What would you advise? [https://pypi.org/project/gender-guesser/]
   
 ### Documentation
+[https://docs.google.com/document/d/1h6Ltmx-dKRk0hAx_J4r7rH3XS-7h_jdtadkWMp3DJGw/edit?usp=sharing]
+
